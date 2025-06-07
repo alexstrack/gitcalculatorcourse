@@ -50,8 +50,22 @@ def menuoptions():
     print("7. Exit")
 
 
+def display_history(history):
+    """Display the history of calculations"""
+    if not history:
+        print("No calculations have been performed yet.")
+        return
+    print("\nCalculation History:")
+    for entry in history:
+        print(
+            f"{entry['num1']} {entry['operation']} {entry['num2']} = {entry['result']}"
+        )
+    print()
+
+
 def main():
     choice = 0
+    history = []
     while choice != "7":
         menuoptions()
         choice = input("Enter choice (1-6): ")
@@ -63,6 +77,7 @@ def main():
         else:
             if choice == "7":
                 print("Exiting the calculator. Goodbye!")
+                display_history(history)
                 break
             else:
                 num1 = float(input("Enter first number: "))
@@ -71,25 +86,73 @@ def main():
                 if choice == "1":
                     result = add(num1, num2)
                     print(f"{num1} + {num2} = {result}")
+                    history.append(
+                        {
+                            "num1": num1,
+                            "num2": num2,
+                            "operation": "add",
+                            "result": result,
+                        }
+                    )
                 elif choice == "2":
                     result = subtract(num1, num2)
                     print(f"{num1} - {num2} = {result}")
+                    history.append(
+                        {
+                            "num1": num1,
+                            "num2": num2,
+                            "operation": "subtract",
+                            "result": result,
+                        }
+                    )
                 elif choice == "3":
                     result = multiply(num1, num2)
                     print(f"{num1} * {num2} = {result}")
+                    history.append(
+                        {
+                            "num1": num1,
+                            "num2": num2,
+                            "operation": "multiply",
+                            "result": result,
+                        }
+                    )
                 elif choice == "4":
                     try:
                         result = divide(num1, num2)
                         print(f"{num1} / {num2} = {result}")
+                        history.append(
+                            {
+                                "num1": num1,
+                                "num2": num2,
+                                "operation": "divide",
+                                "result": result,
+                            }
+                        )
                     except ValueError as e:
                         print(f"Error: {e}")
                 elif choice == "5":
                     result = power(num1, num2)
                     print(f"{num1} ** {num2} = {result}")
+                    history.append(
+                        {
+                            "num1": num1,
+                            "num2": num2,
+                            "operation": "power",
+                            "result": result,
+                        }
+                    )
                 elif choice == "6":
                     try:
                         result = modulo(num1, num2)
                         print(f"{num1} % {num2} = {result}")
+                        history.append(
+                            {
+                                "num1": num1,
+                                "num2": num2,
+                                "operation": "modulo",
+                                "result": result,
+                            }
+                        )
                     except ValueError as e:
                         print(f"Error: {e}")
 
