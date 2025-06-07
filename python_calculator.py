@@ -38,7 +38,8 @@ def modulo(a, b):
     return a % b
 
 
-def main():
+def menuoptions():
+    """Display the menu options"""
     print("Simple Calculator")
     print("1. Add")
     print("2. Subtract")
@@ -46,40 +47,51 @@ def main():
     print("4. Divide")
     print("5. Power")
     print("6. Modulo")
+    print("7. Exit")
 
-    choice = input("Enter choice (1-6): ")
 
-    if choice in ["1", "2", "3", "4", "5", "6"]:
-        num1 = float(input("Enter first number: "))
-        num2 = float(input("Enter second number: "))
+def main():
+    choice = 0
+    while choice != "7":
+        menuoptions()
+        choice = input("Enter choice (1-6): ")
 
-        if choice == "1":
-            result = add(num1, num2)
-            print(f"{num1} + {num2} = {result}")
-        elif choice == "2":
-            result = subtract(num1, num2)
-            print(f"{num1} - {num2} = {result}")
-        elif choice == "3":
-            result = multiply(num1, num2)
-            print(f"{num1} * {num2} = {result}")
-        elif choice == "4":
-            try:
-                result = divide(num1, num2)
-                print(f"{num1} / {num2} = {result}")
-            except ValueError as e:
-                print(f"Error: {e}")
-        elif choice == "5":
-            result = power(num1, num2)
-            print(f"{num1} ** {num2} = {result}")
-        elif choice == "6":
-            try:
-                result = modulo(num1, num2)
-                print(f"{num1} % {num2} = {result}")
-            except ValueError as e:
-                print(f"Error: {e}")
+        # Check if the choice is valid
+        if choice not in ["1", "2", "3", "4", "5", "6", "7"]:
+            print("Invalid choice. It should be between 1 and 7.")
+            return
+        else:
+            if choice == "7":
+                print("Exiting the calculator. Goodbye!")
+                break
+            else:
+                num1 = float(input("Enter first number: "))
+                num2 = float(input("Enter second number: "))
 
-    else:
-        print("Invalid choice. It should be between 1 and 6.")
+                if choice == "1":
+                    result = add(num1, num2)
+                    print(f"{num1} + {num2} = {result}")
+                elif choice == "2":
+                    result = subtract(num1, num2)
+                    print(f"{num1} - {num2} = {result}")
+                elif choice == "3":
+                    result = multiply(num1, num2)
+                    print(f"{num1} * {num2} = {result}")
+                elif choice == "4":
+                    try:
+                        result = divide(num1, num2)
+                        print(f"{num1} / {num2} = {result}")
+                    except ValueError as e:
+                        print(f"Error: {e}")
+                elif choice == "5":
+                    result = power(num1, num2)
+                    print(f"{num1} ** {num2} = {result}")
+                elif choice == "6":
+                    try:
+                        result = modulo(num1, num2)
+                        print(f"{num1} % {num2} = {result}")
+                    except ValueError as e:
+                        print(f"Error: {e}")
 
 
 if __name__ == "__main__":
