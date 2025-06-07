@@ -31,6 +31,13 @@ def power(a, b):
     return a**b
 
 
+def modulo(a, b):
+    """Return the remainder of a divided by b"""
+    if b == 0:
+        raise ValueError("Cannot divide by zero")
+    return a % b
+
+
 def main():
     print("Simple Calculator")
     print("1. Add")
@@ -38,9 +45,9 @@ def main():
     print("3. Multiply")
     print("4. Divide")
 
-    choice = input("Enter choice (1-5): ")
+    choice = input("Enter choice (1-6): ")
 
-    if choice in ["1", "2", "3", "4", "5"]:
+    if choice in ["1", "2", "3", "4", "5", "6"]:
         num1 = float(input("Enter first number: "))
         num2 = float(input("Enter second number: "))
 
@@ -62,6 +69,12 @@ def main():
         elif choice == "5":
             result = power(num1, num2)
             print(f"{num1} ** {num2} = {result}")
+        elif choice == "6":
+            try:
+                result = modulo(num1, num2)
+                print(f"{num1} % {num2} = {result}")
+            except ValueError as e:
+                print(f"Error: {e}")
 
     else:
         print("Invalid choice")
