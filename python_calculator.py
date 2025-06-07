@@ -79,7 +79,7 @@ def main():
                 print(f"Error: {e}")
 
     else:
-        print("Invalid choice")
+        print("Invalid choice. Please select a valid option (1-6).")
 
 
 if __name__ == "__main__":
